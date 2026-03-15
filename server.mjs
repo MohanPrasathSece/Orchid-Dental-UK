@@ -8,6 +8,19 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
+// Set proper MIME types
+app.use(express.static(path.join(__dirname, "dist"), {
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('.js')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    } else if (filePath.endsWith('.mjs')) {
+      res.setHeader('Content-Type', 'application/javascript');
+    } else if (filePath.endsWith('.json')) {
+      res.setHeader('Content-Type', 'application/json');
+    }
+  }
+}));
+
 app.use(express.json({ limit: "200kb" }));
 
 app.post("/api/contact", async (req, res) => {
@@ -60,11 +73,9 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
-const distPath = path.join(__dirname, "dist");
-app.use(express.static(distPath));
-
+// SPA fallback: serve index.html for non-static routes
 app.get("*", (_req, res) => {
-  res.sendFile(path.join(distPath, "index.html"));
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 const port = Number(process.env.PORT) || 8080;
