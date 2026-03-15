@@ -81,7 +81,7 @@ const Treatments = () => (
     <PageBanner
       image={bannerImage}
       title="Our Treatments"
-      subtitle="Comprehensive dental care using the latest techniques and technology."
+      subtitle="Comprehensive dental care using the latest techniques and technology, serving Willesden, Dollis Hill & Willesden Green."
       badge="Services"
     />
 
@@ -91,7 +91,7 @@ const Treatments = () => (
             {treatments.map((t, i) => (
               <FadeInView key={t.title} delay={i * 0.1}>
                 <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-                  <div className="relative h-48 overflow-hidden flex-shrink-0">
+                  <div className="relative h-40 sm:h-48 overflow-hidden flex-shrink-0">
                     <img 
                       src={t.image} 
                       alt={t.title} 
@@ -99,16 +99,16 @@ const Treatments = () => (
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   </div>
-                  <div className="p-10 flex flex-col flex-1">
+                  <div className="p-6 sm:p-8 lg:p-10 flex flex-col flex-1">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                         <t.icon size={20} className="text-primary" />
                       </div>
-                      <h3 className="font-semibold text-foreground text-lg">{t.title}</h3>
+                      <h3 className="font-semibold text-foreground text-base sm:text-lg">{t.title}</h3>
                     </div>
-                    <p className="text-base text-muted leading-relaxed flex-1">{t.desc}</p>
-                    <Link to="/booking" className="text-base font-medium text-primary mt-4 hover:underline inline-block">
-                      Book this treatment →
+                    <p className="text-sm sm:text-base text-muted leading-relaxed flex-1">{t.desc}</p>
+                    <Link to="/contact" className="text-sm sm:text-base font-medium text-primary mt-4 hover:underline inline-block">
+                      Inquire about this treatment →
                     </Link>
                   </div>
                 </div>
@@ -124,11 +124,11 @@ const Treatments = () => (
         <div className="grid lg:grid-cols-2 gap-16 items-center max-w-5xl mx-auto">
           <FadeInView>
             <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Advanced Technology</p>
-            <h2 className="text-3xl font-bold text-foreground mb-6">Cutting-edge equipment for better outcomes</h2>
-            <p className="text-muted leading-relaxed mb-4">
+            <h2 className="text-foreground mb-6">Cutting-edge equipment for better outcomes</h2>
+            <p className="text-muted text-base sm:text-lg leading-relaxed mb-4">
               We use digital X-rays with 90% less radiation, intraoral cameras for detailed views, and CEREC same-day crown technology.
             </p>
-            <p className="text-muted leading-relaxed">
+            <p className="text-muted text-base sm:text-lg leading-relaxed">
               Our commitment to technology means faster, more comfortable treatments with superior results.
             </p>
           </FadeInView>

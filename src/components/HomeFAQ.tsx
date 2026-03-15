@@ -22,48 +22,55 @@ const homePageFaqs = [
   },
 ];
 
-const FAQItem = ({ q, a }: { q: string; a: string }) => {
-  const [open, setOpen] = useState(false);
+const FAQItem = ({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) => {
   return (
     <div className="border-b border-border last:border-0">
       <button
-        onClick={() => setOpen(!open)}
+        onClick={onToggle}
         className="w-full flex items-center justify-between py-5 text-left group"
       >
-        <span className="font-semibold text-foreground pr-4 group-hover:text-primary transition-colors">{q}</span>
+        <span className="font-semibold text-foreground pr-4 group-hover:text-primary transition-colors text-base lg:text-lg">{q}</span>
         <ChevronDown
           size={20}
-          className={`text-muted shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          className={`text-muted shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
       <div
-        className={`overflow-hidden transition-all duration-300 ${open ? "max-h-96 pb-5" : "max-h-0"}`}
+        className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 pb-5" : "max-h-0"}`}
       >
-        <p className="text-sm text-muted leading-relaxed">{a}</p>
+        <p className="text-[15px] sm:text-sm lg:text-base text-muted leading-relaxed">{a}</p>
       </div>
     </div>
   );
 };
 
-const HomeFAQ = () => (
-  <section className="py-20 bg-card">
-    <div className="container mx-auto px-6">
-      <FadeInView>
-        <div className="max-w-2xl mx-auto text-center mb-12">
-          <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">FAQ</p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
-          <p className="text-muted text-lg">
-            Quick answers to common questions about our dental services.
-          </p>
-        </div>
-      </FadeInView>
-      
-      <FadeInView delay={0.1}>
-        <div className="max-w-3xl mx-auto">
-          <div className="rounded-2xl bg-background shadow-medical p-6">
-            {homePageFaqs.map((faq) => (
-              <FAQItem key={faq.q} {...faq} />
-            ))}
+const HomeFAQ = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const handleToggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className="py-20 bg-card">
+      <div className="container mx-auto px-6">
+        <FadeInView>
+          <div className="max-w-2xl mx-auto text-center mb-12">
+            <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">FAQ</p>
+            <h2 className="text-foreground mb-4">Frequently Asked Questions</h2>
+            <p className="text-muted text-base sm:text-lg">
+              Quick answers to common questions about our dental services.
+            </p>
+          </div>
+        </FadeInView>
+        
+        <FadeInView delay={0.1}>
+          <div className="max-w-3xl mx-auto">
+            <div className="rounded-2xl bg-background shadow-medical p-6">
+              {homePageFaqs.map((faq, idx) => (
+                <FAQItem key={faq.q} {...faq} isOpen={openIndex === idx} onToggle={() => handleToggle(idx)} />
+              ))}
+            </div>
           </div>
           
           <div className="text-center mt-8">
@@ -75,10 +82,10 @@ const HomeFAQ = () => (
               View All FAQs
             </Link>
           </div>
-        </div>
-      </FadeInView>
-    </div>
-  </section>
-);
+        </FadeInView>
+      </div>
+    </section>
+  );
+};
 
 export default HomeFAQ;

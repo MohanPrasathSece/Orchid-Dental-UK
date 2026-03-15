@@ -25,22 +25,24 @@ const App = () => (
       <TooltipProvider>
       <Sonner />
       <BrowserRouter>
-        <ScrollToTopOnNav />
-        <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/treatments" element={<Treatments />} />
-            <Route path="/fees" element={<Fees />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </main>
-        <Footer />
-        <ScrollToTop />
+        <div className="min-h-screen flex flex-col">
+          <ScrollToTopOnNav />
+          <Navbar />
+          <main className="flex-1 pb-0 sm:pb-14">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/team" element={<Team />} />
+              <Route path="/treatments" element={<Treatments />} />
+              <Route path="/fees" element={<Fees />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/booking" element={<Booking />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+          <ScrollToTop />
+        </div>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

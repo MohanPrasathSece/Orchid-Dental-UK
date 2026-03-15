@@ -12,9 +12,9 @@ interface CTASectionProps {
 
 const CTASection = ({
   title = "Ready for a healthier smile?",
-  subtitle = "Book your consultation today and discover the Orchid Dental difference.",
-  buttonText = "Book an Appointment",
-  to = "/booking",
+  subtitle = "Contact us today and discover the Orchid Dental difference.",
+  buttonText = "Contact Us",
+  to = "/contact",
   image = bannerHome,
 }: CTASectionProps) => (
   <section className="relative py-24 overflow-hidden">
@@ -26,11 +26,11 @@ const CTASection = ({
     
     <div className="container relative z-10 mx-auto px-6 text-center">
       <FadeInView>
-        <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 tracking-tight">{title}</h2>
-        <p className="text-white/90 text-sm lg:text-base mb-8 max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
+        <h2 className="text-white mb-4 tracking-tight">{title}</h2>
+        <p className="text-white/90 text-base sm:text-lg mb-8 max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
         <Link
           to={to}
-          className="inline-flex items-center px-8 py-4 rounded-xl bg-white text-primary font-bold text-lg hover:bg-gray-100 active:scale-95 transition-all duration-300 shadow-xl"
+          className="inline-flex items-center px-6 py-3 sm:px-8 sm:py-4 rounded-xl bg-white text-primary font-bold text-base sm:text-lg hover:bg-gray-100 active:scale-95 transition-all duration-300 shadow-xl"
         >
           {buttonText}
         </Link>

@@ -48,8 +48,9 @@ const Home = () => {
   return (
     <div>
       <SEO 
-        title="Modern Dental Practice in Willesden"
-        description="Expert family dentistry in Willesden, London NW10. Specializing in cosmetic dentistry, whitening, Invisalign, and emergency care. Book your visit at Orchid Dental Practice today."
+        title="Dentist in Willesden" 
+        description="Modern, gentle dental care at Orchid Dental in Willesden, London—serving nearby Dollis Hill & Willesden Green. Check-ups, hygiene, Invisalign & more."
+        keywords="dentist Willesden, dentist near me Willesden, dental clinic Willesden, private dentist Willesden, emergency dentist Willesden, hygienist Willesden, scale and polish Willesden, teeth whitening Willesden, Invisalign Willesden, white fillings Willesden, root canal Willesden, tooth extraction Willesden, dental crowns Willesden, dentures Willesden, dentist near Dollis Hill, Dollis Hill dentist, dentist near Willesden Green, Willesden Green dentist, emergency dentist near Dollis Hill, Invisalign near Willesden Green"
         canonical="/"
       />
       {/* Hero */}
@@ -66,12 +67,15 @@ const Home = () => {
                 <p className="text-base text-white/90 leading-relaxed max-w-prose mb-8">
                   Experience modern dentistry in a serene environment. Orchid Dental combines advanced technology with a gentle touch, ensuring every visit is comfortable and every smile is crafted with care.
                 </p>
+                <p className="text-sm text-white/80 leading-relaxed max-w-prose mb-8">
+                  Based in Willesden, welcoming patients from Dollis Hill and Willesden Green.
+                </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
-                    to="/booking"
+                    to="/contact"
                     className="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:brightness-110 active:scale-95 transition-all duration-200"
                   >
-                    Book an Appointment
+                    Contact Us
                   </Link>
                   <Link
                     to="/treatments"
@@ -91,8 +95,8 @@ const Home = () => {
         <div className="container mx-auto px-6">
           <FadeInView>
             <div className="max-w-2xl mx-auto text-center mb-16">
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Why families choose Orchid Dental</h2>
-              <p className="text-gray-600 text-lg">
+              <h2 className="text-gray-900 mb-4">Why families choose Orchid Dental</h2>
+              <p className="text-gray-600 text-base sm:text-lg">
                 For over a decade, we've been delivering exceptional dental care with a commitment to transparency, comfort, and clinical excellence.
               </p>
             </div>
@@ -126,18 +130,13 @@ const Home = () => {
             <FadeInView delay={0.15}>
               <div>
                 <p className="text-base font-semibold text-primary uppercase tracking-wider mb-3">About Us</p>
-                <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Care for whole family</h2>
-                <p className="text-base text-gray-600 leading-relaxed mb-4">
-                  At Orchid Dental, we believe that exceptional dental care should be accessible, transparent, and stress-free. Our team of experienced professionals is dedicated to providing personalized treatment plans that prioritize your long-term oral health.
+                <h2 className="text-gray-900 mb-6">Our Mission</h2>
+                <p className="text-base text-gray-600 leading-relaxed mb-6">
+                  At our dental practice, we are guided by a deep commitment to patient-centered care, where every visit is approached with compassion, respect, and professionalism. We believe that dentistry is not just about treating teeth, but about fostering trust and comfort, ensuring that each patient feels heard, valued, and cared for.
                 </p>
-                <ul className="space-y-3 text-base text-gray-600 mb-8">
-                  {["Comprehensive family dentistry", "Children's dental care specialists", "Same-day emergency appointments", "All health funds accepted"].map(item => (
-                    <li key={item} className="flex items-center gap-2">
-                      <CheckCircle2 size={16} className="text-primary shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-base text-gray-600 leading-relaxed mb-8">
+                  From gentle preventive treatments to advanced restorative procedures, we combine expertise with empathy, creating an environment where oral health is nurtured with attention to both clinical excellence and personal well-being. Your smile is our priority, and our ethos is rooted in providing care that is thorough, thoughtful, and tailored to your unique needs.
+                </p>
                 <Link
                   to="/team"
                   className="inline-flex items-center px-6 py-3 rounded-lg bg-accent text-accent-foreground font-semibold hover:bg-accent/80 transition-colors duration-200"
@@ -165,7 +164,7 @@ const Home = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <FadeInView>
               <p className="text-base font-semibold text-primary uppercase tracking-wider mb-3">Our Technology</p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">State-of-the-art dental equipment</h2>
+              <h2 className="text-foreground mb-6">State-of-the-art dental equipment</h2>
               <p className="text-base text-muted leading-relaxed mb-6">
                 We invest in the latest dental technology to ensure the best possible care for our patients. Our modern equipment allows for more accurate diagnoses, comfortable treatments, and better outcomes.
               </p>
@@ -222,7 +221,7 @@ const Home = () => {
           <FadeInView>
             <div className="text-center mb-16">
               <p className="text-base font-semibold text-primary uppercase tracking-wider mb-3">Testimonials</p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">What our patients say</h2>
+              <h2 className="text-foreground mb-4">What our patients say</h2>
               <p className="text-base text-muted max-w-2xl mx-auto">
                 Don't just take our word for it. Here's what our patients have to say about their experience at Orchid Dental.
               </p>
@@ -231,18 +230,18 @@ const Home = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((t, i) => (
               <FadeInView key={i} delay={i * 0.1}>
-                <div className="bg-card rounded-2xl p-6 shadow-medical min-h-[280px] flex flex-col">
+                <div className="bg-card rounded-2xl p-4 sm:p-6 shadow-medical min-h-[240px] sm:min-h-[280px] flex flex-col">
                   <div className="flex items-center gap-1 mb-4">
                     {Array.from({ length: 5 }).map((_, star) => (
                       <Star key={star} size={16} className="fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <blockquote className="text-lg text-muted leading-relaxed flex-1 mb-6">
+                  <blockquote className="text-sm md:text-[10px] lg:text-sm xl:text-lg text-muted leading-relaxed flex-1 mb-6">
                     "{t.text}"
                   </blockquote>
                   <div className="border-t border-gray-100 pt-4">
-                    <p className="font-semibold text-foreground text-lg">{t.name}</p>
-                    <p className="text-base text-muted">Patient</p>
+                    <p className="font-semibold text-foreground text-sm md:text-[10px] lg:text-sm xl:text-lg">{t.name}</p>
+                    <p className="text-xs md:text-[8px] lg:text-xs xl:text-base text-muted">Patient</p>
                   </div>
                 </div>
               </FadeInView>
@@ -257,19 +256,21 @@ const Home = () => {
           <FadeInView>
             <div className="max-w-2xl mx-auto text-center mb-12">
               <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Find Us</p>
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Visit our clinic</h2>
+              <h2 className="text-foreground mb-4">Visit our clinic</h2>
               <p className="text-muted">158–160 High Road, London NW10 2PB</p>
             </div>
           </FadeInView>
           <FadeInView delay={0.1}>
             <div className="rounded-2xl overflow-hidden shadow-medical-lg max-w-4xl mx-auto h-[350px]">
               <iframe
-                title="Orchid Dental Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.917!2d-0.2441!3d51.5353!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876112e4c5a2d97%3A0x9c4f3b6c2b5b2b2b!2s158%E2%80%93160%20High%20Rd%2C%20London%20NW10%202PB%2C%20UK!5e0!3m2!1sen!2sus!4v1630000000000!5m2!1sen!2sus"
-                className="w-full h-full border-0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.129349878369!2d-0.2343988!3d51.547527099999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761052ca717043%3A0x66d4a3228fac5d1e!2sOrchid%20Dental!5e0!3m2!1sen!2sin!4v1773546596060!5m2!1sen!2sin"
+                width="600"
+                height="450"
+                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full"
               />
             </div>
           </FadeInView>
@@ -285,15 +286,15 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative h-full flex items-center justify-center text-center px-6">
           <FadeInView>
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Your smile is our passion</h2>
-            <p className="text-white/90 text-lg max-w-lg mx-auto mb-6">
+            <h2 className="text-white mb-4">Your smile is our passion</h2>
+            <p className="text-white/90 text-base sm:text-lg max-w-lg mx-auto mb-6">
               Experience the difference of modern, compassionate dental care.
             </p>
             <Link
-              to="/booking"
-              className="inline-flex items-center px-8 py-4 rounded-lg bg-white text-primary font-semibold text-lg hover:bg-gray-100 active:scale-95 transition-all duration-200"
+              to="/contact"
+              className="inline-flex items-center px-6 py-3 sm:px-8 sm:py-4 rounded-lg bg-white text-primary font-semibold text-base sm:text-lg hover:bg-gray-100 active:scale-95 transition-all duration-200"
             >
-              Book an Appointment
+              Contact Us
             </Link>
           </FadeInView>
         </div>

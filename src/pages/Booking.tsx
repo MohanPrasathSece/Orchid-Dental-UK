@@ -286,7 +286,7 @@ const Booking = () => {
 
                 <div className="p-6 rounded-2xl bg-card shadow-medical">
                   <h3 className="font-semibold text-foreground mb-3">Contact Us Directly</h3>
-                  <div className="space-y-2 text-sm text-muted">
+                  <div className="space-y-2 text-base text-muted">
                     <p className="font-mono">020 8459 2626</p>
                     <p>info@orchiddental.co.uk</p>
                     <p>158–160 High Road, London NW10 2PB</p>
@@ -295,8 +295,9 @@ const Booking = () => {
 
                 <div className="p-6 rounded-2xl bg-primary-muted">
                   <h3 className="font-semibold text-foreground mb-2">Opening Hours</h3>
-                  <div className="text-sm text-muted space-y-1">
-                    <p>Mon – Fri: 8:00 AM – 6:00 PM</p>
+                  <div className="text-base text-muted space-y-1">
+                    <p>Mon – Thu: 9:00 AM – 6:30 PM</p>
+                    <p>Friday: 9:00 AM – 6:00 PM</p>
                     <p>Saturday: 9:00 AM – 2:00 PM</p>
                     <p>Sunday: Closed</p>
                   </div>

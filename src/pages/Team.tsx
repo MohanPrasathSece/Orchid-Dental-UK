@@ -83,7 +83,7 @@ const Team = () => (
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
               <div className="grid lg:grid-cols-2 gap-0">
-                <div className="relative h-96 lg:h-auto">
+                <div className="relative h-72 sm:h-96 lg:h-auto">
                   <img 
                     src={team[0].image} 
                     alt={team[0].name} 
@@ -93,11 +93,11 @@ const Team = () => (
                     Principal Dentist
                   </div>
                 </div>
-                <div className="p-8 lg:p-12 flex flex-col justify-center">
-                  <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
+                <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
+                  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-3">
                     {team[0].name}
                   </h2>
-                  <p className="text-lg text-primary font-medium mb-2">
+                  <p className="text-base sm:text-lg text-primary font-medium mb-2">
                     {team[0].qualifications}
                   </p>
                   <p className="text-base text-muted leading-relaxed mb-6">
@@ -123,7 +123,7 @@ const Team = () => (
         <FadeInView>
           <div className="text-center mb-16">
             <p className="text-base font-semibold text-primary uppercase tracking-wider mb-3">Our Dental Team</p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">Expert Care Professionals</h2>
+            <h2 className="text-foreground mb-4">Expert Care Professionals</h2>
             <p className="text-base text-muted max-w-2xl mx-auto">
               Meet the dedicated professionals who make Orchid Dental Practice a place of excellence and compassion.
             </p>
@@ -134,7 +134,7 @@ const Team = () => (
           {team.slice(1).map((member, i) => (
             <FadeInView key={member.name} delay={i * 0.1}>
               <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-52 sm:h-64 overflow-hidden">
                   <img 
                     src={member.image} 
                     alt={member.name} 
@@ -142,11 +142,11 @@ const Team = () => (
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-white font-semibold text-lg">{member.name}</h3>
-                    <p className="text-white/90 text-sm">{member.role}</p>
+                    <h3 className="text-white font-semibold text-base sm:text-lg">{member.name}</h3>
+                    <p className="text-white/90 text-xs sm:text-sm">{member.role}</p>
                   </div>
                 </div>
-                <div className="p-8">
+                <div className="p-6 sm:p-8">
                   <p className="text-base text-primary font-mono mb-4">{member.qualifications}</p>
                   <p className="text-base text-muted leading-relaxed line-clamp-3">
                     {member.bio}
@@ -165,7 +165,7 @@ const Team = () => (
         <FadeInView>
           <div className="max-w-3xl mx-auto text-center">
             <p className="text-base font-semibold text-primary uppercase tracking-wider mb-3">Our Values</p>
-            <h2 className="text-3xl font-bold text-foreground mb-6">What drives our team</h2>
+            <h2 className="text-foreground mb-6">What drives our team</h2>
             <div className="grid sm:grid-cols-3 gap-6">
               {[
                 { title: "Compassion", desc: "We treat every patient with empathy, kindness, and respect." },
@@ -173,8 +173,8 @@ const Team = () => (
                 { title: "Integrity", desc: "Honest advice, transparent pricing, no surprises." },
               ].map((value, i) => (
                 <FadeInView key={value.title} delay={i * 0.1}>
-                  <div className="bg-white rounded-2xl p-8 shadow-md">
-                    <h3 className="font-semibold text-foreground mb-3 text-lg">{value.title}</h3>
+                  <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-md">
+                    <h3 className="font-semibold text-foreground mb-3 text-base sm:text-lg">{value.title}</h3>
                     <p className="text-muted text-base">{value.desc}</p>
                   </div>
                 </FadeInView>
@@ -188,8 +188,8 @@ const Team = () => (
     <CTASection 
       title="Ready to experience exceptional dental care?" 
       subtitle="Join thousands of satisfied patients who trust our team with their smiles." 
-      buttonText="Book an Appointment" 
-      to="/booking" 
+      buttonText="Contact Us" 
+      to="/contact" 
     />
   </div>
 );

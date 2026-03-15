@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, Instagram, Clock } from "lucide-react";
 import logo from "/orchid_dental_logo-removebg-preview.png";
 import { useState, useEffect } from "react";
 
@@ -54,7 +54,6 @@ const Footer = () => {
                   { to: "/fees", label: "Fees" },
                   { to: "/faq", label: "FAQ" },
                   { to: "/contact", label: "Contact" },
-                  { to: "/booking", label: "Book Appointment" },
                 ].map((l) => (
                   <Link key={l.to} to={l.to} className="text-sm text-secondary/70 hover:text-primary transition-colors">
                     {l.label}
@@ -89,6 +88,9 @@ const Footer = () => {
                   <MapPin size={16} className="text-primary shrink-0" />
                   <span>158–160 High Road, London NW10 2PB</span>
                 </div>
+                <div className="text-xs text-secondary/50 pt-1">
+                  Serving Willesden, Dollis Hill & Willesden Green
+                </div>
               </div>
             </div>
           </div>
@@ -114,30 +116,53 @@ const Footer = () => {
       </footer>
 
       {/* Small Sticky Footer */}
-      <div className="fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-gray-300 py-1.5 z-50 shadow-lg">
-        <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <img src={logo} alt="Orchid Dental" className="h-5 w-5 object-contain" />
-              <span className="text-xs font-medium text-gray-700">Orchid Dental</span>
-            </div>
-            <div className="flex items-center gap-4 text-xs text-gray-600">
-              <div className="flex items-center gap-1">
-                <MapPin size={10} />
-                <span>London NW10 2PB</span>
+      {showStickyFooter && (
+        <div className="hidden sm:block fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-gray-300 py-2 sm:py-1.5 z-50 shadow-lg">
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-2 min-w-0">
+                <img src={logo} alt="Orchid Dental" className="h-5 w-5 object-contain shrink-0" />
+                <span className="text-xs font-medium text-foreground truncate">Orchid Dental</span>
               </div>
-              <div className="flex items-center gap-1">
-                <Phone size={10} />
-                <span>020 8459 2626</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <Mail size={10} />
-                <span>info@orchiddental.co.uk</span>
+
+              <div className="flex items-center gap-2 sm:gap-4 text-xs">
+                <a
+                  href="tel:02084592626"
+                  className="inline-flex items-center gap-1 rounded-lg bg-white/70 px-2.5 py-1.5 border border-black/10 text-foreground font-medium hover:bg-white transition-colors"
+                  aria-label="Call Orchid Dental"
+                >
+                  <Phone size={12} className="text-primary" />
+                  <span className="font-mono">020 8459 2626</span>
+                </a>
+
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-1 rounded-lg bg-white/70 px-2.5 py-1.5 border border-black/10 text-foreground font-medium hover:bg-white transition-colors sm:hidden"
+                  aria-label="Contact Orchid Dental"
+                >
+                  <MapPin size={12} className="text-primary" />
+                  <span>Directions</span>
+                </Link>
+
+                <div className="hidden sm:flex items-center gap-4">
+                  <div className="hidden md:flex items-center gap-1">
+                    <MapPin size={10} className="text-primary" />
+                    <span className="text-foreground font-medium">158–160 High Road, London NW10 2PB</span>
+                  </div>
+                  <div className="hidden lg:flex items-center gap-1">
+                    <Mail size={10} className="text-primary" />
+                    <span className="text-foreground font-medium">info@orchiddental.co.uk</span>
+                  </div>
+                  <div className="hidden xl:flex items-center gap-1">
+                    <Clock size={10} className="text-primary" />
+                    <span className="text-foreground font-medium">Mon-Thu 9am-6:30pm</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

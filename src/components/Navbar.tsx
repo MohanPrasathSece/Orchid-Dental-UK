@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { createPortal } from "react-dom";
+import { ChevronRight, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "/orchid_dental_logo-removebg-preview.png";
 
@@ -15,6 +16,17 @@ const links = [
 const Navbar = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [mobileOpen]);
 
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-md bg-card/80" style={{ boxShadow: "var(--shadow-sm)" }}>
@@ -47,10 +59,10 @@ const Navbar = () => {
         </div>
 
         <Link
-          to="/booking"
+          to="/contact"
           className="hidden lg:inline-flex items-center px-6 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:brightness-110 active:scale-95 transition-all duration-200"
         >
-          Book Appointment
+          Contact Us
         </Link>
 
         {/* Mobile toggle */}
@@ -64,73 +76,76 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      <AnimatePresence>
-        {mobileOpen && (
+      {mobileOpen && createPortal(
+        <AnimatePresence>
           <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[60] bg-white flex flex-col p-8 lg:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 lg:hidden"
+            aria-modal="true"
+            role="dialog"
           >
-            <div className="flex justify-between items-center mb-12">
-              <Link to="/" onClick={() => setMobileOpen(false)} className="flex items-center gap-2">
-                <img src={logo} alt="Orchid Dental" className="h-8 w-8 object-contain" />
-                <span className="text-lg font-bold text-foreground">
-                  Orchid <span className="text-primary">Dental</span>
-                </span>
-              </Link>
-              <button 
-                onClick={() => setMobileOpen(false)}
-                className="p-2 bg-slate-100 rounded-full text-foreground hover:bg-slate-200 transition-colors"
-                aria-label="Close menu"
-              >
-                <X size={24} />
-              </button>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              {links.map((link, i) => (
-                <motion.div
-                  key={link.to}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + i * 0.05 }}
-                >
-                  <Link
-                    to={link.to}
-                    onClick={() => setMobileOpen(false)}
-                    className={`text-3xl font-bold transition-colors ${
-                      location.pathname === link.to ? "text-primary px-4 border-l-4 border-primary" : "text-slate-800 hover:text-primary"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="mt-auto pt-8 border-t border-slate-100"
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 bg-black/20 backdrop-blur-md"
+              aria-label="Close menu"
+            />
+
+            <button
+              type="button"
+              onClick={() => setMobileOpen(false)}
+              className="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-colors"
+              aria-label="Close menu"
             >
-              <Link
-                to="/booking"
-                onClick={() => setMobileOpen(false)}
-                className="w-full inline-flex items-center justify-center px-8 py-4 rounded-xl bg-primary text-primary-foreground text-lg font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all"
-              >
-                Book Appointment
-              </Link>
-              <div className="mt-8 space-y-2 text-slate-500 text-sm">
-                <p className="font-mono">020 8459 2626</p>
-                <p>158–160 High Road, London NW10 2PB</p>
+              <X size={24} />
+            </button>
+
+            <motion.div
+              initial={{ y: 24, opacity: 0, scale: 0.98 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              exit={{ y: 24, opacity: 0, scale: 0.98 }}
+              transition={{ type: "spring", damping: 22, stiffness: 260 }}
+              className="relative mx-auto mt-20 w-[calc(100%-2.5rem)] max-w-sm rounded-3xl bg-white/95 shadow-2xl ring-1 ring-black/10 overflow-hidden"
+            >
+              <div className="px-6 py-6">
+                <nav className="space-y-2">
+                  {links.map((link, i) => {
+                    const active = location.pathname === link.to;
+
+                    return (
+                      <motion.div
+                        key={link.to}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.05 + i * 0.04 }}
+                      >
+                        <Link
+                          to={link.to}
+                          onClick={() => setMobileOpen(false)}
+                          className={
+                            "flex items-center justify-between rounded-2xl px-5 py-4 text-base font-medium transition-colors " +
+                            (active
+                              ? "bg-primary/10 text-primary"
+                              : "text-foreground/80 hover:text-foreground hover:bg-black/5")
+                          }
+                        >
+                          <span>{link.label}</span>
+                          <ChevronRight size={18} className={active ? "text-primary" : "text-foreground/60"} />
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                </nav>
               </div>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </AnimatePresence>,
+        document.body
+      )}
     </nav>
   );
 };
