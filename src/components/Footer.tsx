@@ -114,28 +114,24 @@ const Footer = () => {
       </footer>
 
       {/* Small Sticky Footer */}
-      <div 
-        className={`fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-gray-300 py-3 z-50 shadow-lg transition-transform duration-300 ${
-          showStickyFooter ? "translate-y-0" : "translate-y-full"
-        }`}
-      >
+      <div className="fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-gray-300 py-1.5 z-50 shadow-lg">
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <img src={logo} alt="Orchid Dental" className="h-6 w-6 object-contain" />
-              <span className="text-xs font-bold text-black uppercase tracking-tight">Orchid Dental</span>
+              <img src={logo} alt="Orchid Dental" className="h-5 w-5 object-contain" />
+              <span className="text-xs font-medium text-gray-700">Orchid Dental</span>
             </div>
-            <div className="flex items-center gap-6 text-xs text-black font-medium">
+            <div className="flex items-center gap-4 text-xs text-gray-600">
               <div className="flex items-center gap-1">
-                <MapPin size={12} className="text-primary" />
+                <MapPin size={10} />
                 <span>London NW10 2PB</span>
               </div>
               <div className="flex items-center gap-1">
-                <Phone size={12} className="text-primary" />
+                <Phone size={10} />
                 <span>020 8459 2626</span>
               </div>
               <div className="flex items-center gap-1">
-                <Mail size={12} className="text-primary" />
+                <Mail size={10} />
                 <span>info@orchiddental.co.uk</span>
               </div>
             </div>

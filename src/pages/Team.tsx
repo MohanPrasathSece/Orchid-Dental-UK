@@ -146,9 +146,9 @@ const Team = () => (
                     <p className="text-white/90 text-sm">{member.role}</p>
                   </div>
                 </div>
-                <div className="p-6">
-                  <p className="text-xs text-primary font-mono mb-3">{member.qualifications}</p>
-                  <p className="text-sm text-muted leading-relaxed line-clamp-3">
+                <div className="p-8">
+                  <p className="text-base text-primary font-mono mb-4">{member.qualifications}</p>
+                  <p className="text-base text-muted leading-relaxed line-clamp-3">
                     {member.bio}
                   </p>
                 </div>
