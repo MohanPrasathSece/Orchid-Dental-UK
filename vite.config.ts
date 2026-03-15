@@ -11,6 +11,18 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
+  build: {
+    target: "esnext",
+    rollupOptions: {
+      output: {
+        entryFileNames: "assets/[name].js",
+        chunkFileNames: "assets/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash].[ext]",
+        manualChunks: undefined,
+      },
+    },
+    assetsInlineLimit: 0,
+  },
   plugins: [react()],
   resolve: {
     alias: {

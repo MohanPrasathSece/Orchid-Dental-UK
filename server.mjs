@@ -17,9 +17,17 @@ app.use(express.static(path.join(__dirname, "dist"), {
       res.setHeader('Content-Type', 'application/javascript');
     } else if (filePath.endsWith('.json')) {
       res.setHeader('Content-Type', 'application/json');
+    } else if (filePath.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css');
     }
   }
 }));
+
+// Explicit manifest.json route
+app.get('/manifest.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.sendFile(path.join(__dirname, 'dist', 'manifest.json'));
+});
 
 app.use(express.json({ limit: "200kb" }));
 

@@ -11,7 +11,7 @@ interface SEOProps {
 
 const SEO = ({ title, description, keywords, canonical, ogType = "website", ogImage }: SEOProps) => {
   const siteName = "Orchid Dental Practice";
-  const fullTitle = `${title} | ${siteName}`;
+  const fullTitle = `${title} - ${siteName}`;
   const url = "https://orchiddental.co.uk";
 
   const jsonLd = {
