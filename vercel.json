@@ -11,6 +11,18 @@
   ],
   "routes": [
     {
+      "src": "/manifest.json",
+      "dest": "/manifest.json"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(ico|png|jpg|jpeg|svg|css|js))",
+      "dest": "/$1"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html",
       "methods": ["GET", "HEAD", "OPTIONS"]
