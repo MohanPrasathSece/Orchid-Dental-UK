@@ -1,0 +1,149 @@
+import { Link } from "react-router-dom";
+import { Phone, Mail, MapPin, Instagram } from "lucide-react";
+import logo from "/orchid_dental_logo-removebg-preview.png";
+import { useState, useEffect } from "react";
+
+const Footer = () => {
+  const [showStickyFooter, setShowStickyFooter] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setShowStickyFooter(true);
+      } else {
+        setShowStickyFooter(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div className="relative">
+      {/* Main Footer */}
+      <footer className="bg-foreground text-secondary py-16">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+            {/* Company Info */}
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <img src={logo} alt="Orchid Dental" className="h-10 w-10 object-contain brightness-200" />
+              </div>
+              <h3 className="font-bold text-lg mb-4 text-white">Orchid Dental Practice</h3>
+              <p className="text-sm text-white leading-relaxed">
+                Modern dentistry for the whole family. Professional, gentle, and comprehensive care in a serene environment.
+              </p>
+              <div className="flex gap-3 mt-4">
+                <a href="#" className="w-9 h-9 rounded-lg bg-secondary/10 flex items-center justify-center hover:bg-primary text-secondary/60 hover:text-primary-foreground transition-colors" aria-label="Instagram">
+                  <Instagram size={16} />
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4 text-secondary/50">Quick Links</h4>
+              <div className="flex flex-col gap-2">
+                {[
+                  { to: "/", label: "Home" },
+                  { to: "/team", label: "Our Team" },
+                  { to: "/treatments", label: "Treatments" },
+                  { to: "/fees", label: "Fees" },
+                  { to: "/faq", label: "FAQ" },
+                  { to: "/contact", label: "Contact" },
+                  { to: "/booking", label: "Book Appointment" },
+                ].map((l) => (
+                  <Link key={l.to} to={l.to} className="text-sm text-secondary/70 hover:text-primary transition-colors">
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Services */}
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4 text-secondary/50">Services</h4>
+              <div className="flex flex-col gap-2 text-sm text-secondary/70">
+                {["Teeth Cleaning", "Teeth Whitening", "Root Canal Treatment", "Dental Implants", "Orthodontics", "Cosmetic Dentistry"].map(s => (
+                  <Link key={s} to="/treatments" className="hover:text-primary transition-colors">{s}</Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Contact Info */}
+            <div>
+              <h4 className="text-sm font-semibold uppercase tracking-wider mb-4 text-secondary/50">Contact</h4>
+              <div className="flex flex-col gap-3 text-sm text-secondary/70">
+                <a href="tel:02084592626" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Phone size={16} className="text-primary" />
+                  <span className="font-mono">020 8459 2626</span>
+                </a>
+                <a href="mailto:info@orchiddental.co.uk" className="flex items-center gap-2 hover:text-primary transition-colors">
+                  <Mail size={16} className="text-primary" />
+                  <span>info@orchiddental.co.uk</span>
+                </a>
+                <div className="flex items-center gap-2">
+                  <MapPin size={16} className="text-primary shrink-0" />
+                  <span>158–160 High Road, London NW10 2PB</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright */}
+          <div className="mt-12 pt-8 border-t border-secondary/10 text-center">
+            <div className="text-xs text-secondary/40 mb-2">
+              &copy; {new Date().getFullYear()} Orchid Dental. All rights reserved.
+            </div>
+            <div className="text-xs text-secondary/40">
+              Developed by{' '}
+              <a
+                href="https://www.zyradigitals.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-primary hover:text-primary/80 transition-colors"
+              >
+                Zyra Digitals
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Small Sticky Footer */}
+      <div 
+        className={`fixed bottom-0 left-0 right-0 bg-gray-100 border-t border-gray-300 py-3 z-50 shadow-lg transition-transform duration-300 ${
+          showStickyFooter ? "translate-y-0" : "translate-y-full"
+        }`}
+      >
+        <div className="container mx-auto px-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <img src={logo} alt="Orchid Dental" className="h-6 w-6 object-contain" />
+              <span className="text-xs font-bold text-black uppercase tracking-tight">Orchid Dental</span>
+            </div>
+            <div className="flex items-center gap-6 text-xs text-black font-medium">
+              <div className="flex items-center gap-1">
+                <MapPin size={12} className="text-primary" />
+                <span>London NW10 2PB</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Phone size={12} className="text-primary" />
+                <span>020 8459 2626</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <Mail size={12} className="text-primary" />
+                <span>info@orchiddental.co.uk</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;
