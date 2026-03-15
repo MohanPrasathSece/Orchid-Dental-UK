@@ -1,0 +1,19 @@
+# Vercel deployment configuration
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/assets/*.js"
+  [headers.values]
+  Content-Type = "application/javascript"
+
+[[headers]]
+  for = "/manifest.json"
+  [headers.values]
+  Content-Type = "application/json"
