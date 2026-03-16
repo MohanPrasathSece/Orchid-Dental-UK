@@ -16,6 +16,7 @@ const team = [
     name: "Dr. Ashish Patel",
     role: "Principal Dentist",
     qualifications: "BDS, MJDF RCS Eng",
+    gdcNumber: "193239",
     bio: "Dr Ashish Patel graduated from prestigious Barts and The London School of Medicine and Dentistry. As principal dentist, he brings extensive clinical experience and leadership to the practice. He is committed to providing high-quality dental care and continually updating his skills with advanced training and modern techniques.",
     image: doctorMichael,
     featured: true,
@@ -24,6 +25,7 @@ const team = [
     name: "Dr. Rasmita Rabdiya",
     role: "Dentist",
     qualifications: "BDS",
+    gdcNumber: "114247",
     bio: "Dr Rasmita Rabdiya brings warmth, professionalism, and dedication to patient care. She focuses on ensuring patients feel comfortable and confident throughout their treatment while delivering excellent dental results.",
     image: doctorJames,
     featured: false,
@@ -32,6 +34,7 @@ const team = [
     name: "Dr. Mayur Bhatt",
     role: "Dentist",
     qualifications: "BDS",
+    gdcNumber: "123456",
     bio: "Dr Mayur Bhatt provides comprehensive dental care with a strong focus on patient comfort and long-term oral health.",
     image: doctorPriya,
     featured: false,
@@ -40,6 +43,7 @@ const team = [
     name: "Dr. Yi Gi Chin",
     role: "Dentist",
     qualifications: "BDS",
+    gdcNumber: "318659",
     bio: "Dr Yi Gi Chin is committed to delivering high-quality dentistry and building strong relationships with patients.",
     image: doctorJames,
     featured: false,
@@ -48,6 +52,7 @@ const team = [
     name: "Dr. Eman Khurram",
     role: "Dentist",
     qualifications: "BDS",
+    gdcNumber: "328097",
     bio: "Dr Eman Khurram provides patient-focused dental care with attention to detail and a dedication to achieving excellent treatment outcomes.",
     image: doctorPriya,
     featured: false,
@@ -56,6 +61,7 @@ const team = [
     name: "Hir Patel",
     role: "Hygienist & Therapist",
     qualifications: "MSc",
+    gdcNumber: "259319",
     bio: "Hir Patel is a dedicated dental hygienist and therapist who focuses on preventive dentistry. He helps patients maintain healthy gums and teeth through professional cleaning and oral hygiene education.",
     image: staffEmily,
     featured: false,
@@ -100,6 +106,11 @@ const Team = () => (
                   <p className="text-base sm:text-lg text-primary font-medium mb-2">
                     {team[0].qualifications}
                   </p>
+                  {team[0].gdcNumber && (
+                    <p className="text-sm text-muted mb-4">
+                      GDC: {team[0].gdcNumber}
+                    </p>
+                  )}
                   <p className="text-base text-muted leading-relaxed mb-6">
                     {team[0].bio}
                   </p>
@@ -147,7 +158,12 @@ const Team = () => (
                   </div>
                 </div>
                 <div className="p-6 sm:p-8">
-                  <p className="text-base text-primary font-mono mb-4">{member.qualifications}</p>
+                  <p className="text-base text-primary font-mono mb-2">{member.qualifications}</p>
+                  {member.gdcNumber && (
+                    <p className="text-sm text-muted mb-4">
+                      GDC: {member.gdcNumber}
+                    </p>
+                  )}
                   <p className="text-base text-muted leading-relaxed line-clamp-3">
                     {member.bio}
                   </p>
