@@ -6,11 +6,11 @@ import FadeInView from "@/components/FadeInView";
 const homePageFaqs = [
   {
     q: "What should I expect at my first visit?",
-    a: "Your first visit includes a comprehensive exam, digital X-rays, and a personalised treatment plan discussion. We'll review your dental history and address any concerns. The appointment typically takes 45–60 minutes.",
+    a: "Your first visit includes a comprehensive exam, digital X-rays, and a personalised treatment plan discussion. We'll review your dental history and address any concerns.",
   },
   {
     q: "Do you accept health insurance?",
-    a: "Yes, we accept all major health funds and process claims on-site with HICAPS. We'll help you maximise your benefits and explain any out-of-pocket costs before treatment.",
+    a: "Yes, we accept all major health funds. Please contact us to discuss your coverage.",
   },
   {
     q: "How often should I visit the dentist?",

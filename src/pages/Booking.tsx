@@ -15,7 +15,6 @@ const treatments = [
   "General Check-up & Clean",
   "Teeth Whitening",
   "Root Canal Treatment",
-  "Dental Implants",
   "Orthodontics / Braces",
   "Tooth Extraction",
   "Composite Filling",
@@ -296,9 +295,8 @@ const Booking = () => {
                 <div className="p-6 rounded-2xl bg-primary-muted">
                   <h3 className="font-semibold text-foreground mb-2">Opening Hours</h3>
                   <div className="text-base text-muted space-y-1">
-                    <p>Mon – Thu: 9:00 AM – 6:30 PM</p>
-                    <p>Friday: 9:00 AM – 6:00 PM</p>
-                    <p>Saturday: 9:00 AM – 2:00 PM</p>
+                    <p>Monday – Friday: 9:00 AM – 1:00 PM, 2:00 PM – 5:00 PM</p>
+                    <p>Saturday: Closed</p>
                     <p>Sunday: Closed</p>
                   </div>
                 </div>

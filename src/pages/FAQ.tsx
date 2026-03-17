@@ -18,22 +18,18 @@ const additionalFaqs = [
   },
   {
     q: "What are your opening hours?",
-    a: "We're open Monday to Friday from 8am to 6pm and Saturday from 9am to 2pm. We're closed on Sundays and public holidays. Emergency appointments are available during business hours.",
+    a: "We're open Monday to Friday from 9:00 AM to 1:00 PM and 2:00 PM to 5:00 PM. We're closed on Saturdays and Sundays. Emergency appointments are available during business hours.",
   },
 ];
 
 const treatmentFaqs = [
   {
     q: "How long does teeth whitening last?",
-    a: "Professional whitening results typically last 1–3 years, depending on your diet and oral hygiene habits. We provide take-home kits for maintenance touch-ups to keep your smile bright.",
+    a: "Professional whitening results typically last 1–3 years, depending on your diet and oral hygiene habits. You can purchase extra whitening syringes for maintenance touch-ups to keep your smile bright.",
   },
   {
     q: "What is a root canal and is it necessary?",
     a: "A root canal removes infected tissue inside a tooth to save it from extraction. It's a routine procedure performed under local anaesthetic and is usually no more uncomfortable than a filling. Saving a natural tooth is always preferred when possible.",
-  },
-  {
-    q: "How long do dental implants last?",
-    a: "With proper care, dental implants can last a lifetime. The implant itself is made of titanium which fuses with your jawbone. The crown on top typically lasts 10–15 years before it may need replacement.",
   },
   {
     q: "Are braces or clear aligners better for me?",
@@ -41,11 +37,7 @@ const treatmentFaqs = [
   },
   {
     q: "What should I do in a dental emergency?",
-    a: "Call us immediately during business hours. For a knocked-out tooth, keep it moist (in milk or saliva) and come in within 30 minutes for the best chance of saving it. For severe pain or swelling, take over-the-counter pain relief and contact us.",
-  },
-  {
-    q: "How long does it take to get a dental crown?",
-    a: "With our CEREC technology, we can create same-day crowns in a single visit. Traditional crowns require two visits over 2–3 weeks. We'll discuss which option is best for your situation.",
+    a: "Call us immediately during business hours for advice and to arrange an emergency appointment.",
   },
 ];
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin, Instagram, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import logo from "/orchid_dental_logo-removebg-preview.png";
 import { useState, useEffect } from "react";
 
@@ -36,11 +36,6 @@ const Footer = () => {
               <p className="text-sm text-white leading-relaxed">
                 Modern dentistry for the whole family. Professional, gentle, and comprehensive care in a serene environment.
               </p>
-              <div className="flex gap-3 mt-4">
-                <a href="#" className="w-9 h-9 rounded-lg bg-secondary/10 flex items-center justify-center hover:bg-primary text-secondary/60 hover:text-primary-foreground transition-colors" aria-label="Instagram">
-                  <Instagram size={16} />
-                </a>
-              </div>
             </div>
 
             {/* Quick Links */}
@@ -66,7 +61,7 @@ const Footer = () => {
             <div>
               <h4 className="text-sm font-semibold uppercase tracking-wider mb-4 text-secondary/50">Services</h4>
               <div className="flex flex-col gap-2 text-sm text-secondary/70">
-                {["Teeth Cleaning", "Teeth Whitening", "Root Canal Treatment", "Dental Implants", "Orthodontics", "Cosmetic Dentistry"].map(s => (
+                {["Teeth Cleaning", "Teeth Whitening", "Root Canal Treatment", "Orthodontics", "Cosmetic Dentistry"].map(s => (
                   <Link key={s} to="/treatments" className="hover:text-primary transition-colors">{s}</Link>
                 ))}
               </div>
@@ -89,7 +84,7 @@ const Footer = () => {
                   <span>158–160 High Road, London NW10 2PB</span>
                 </div>
                 <div className="text-xs text-secondary/50 pt-1">
-                  Serving Willesden, Dollis Hill & Willesden Green
+                  <span className="font-semibold">Main areas:</span> Dollis Hill, Willesden | Also serving: Brondesbury, Queens Park, Cricklewood
                 </div>
               </div>
             </div>
@@ -155,7 +150,7 @@ const Footer = () => {
                   </div>
                   <div className="hidden xl:flex items-center gap-1">
                     <Clock size={10} className="text-primary" />
-                    <span className="text-foreground font-medium">Mon-Thu 9am-6:30pm</span>
+                    <span className="text-foreground font-medium">Mon-Fri 9am-5pm (closed 1-2pm)</span>
                   </div>
                 </div>
               </div>

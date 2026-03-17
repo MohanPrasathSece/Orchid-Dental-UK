@@ -169,7 +169,7 @@ const Home = () => {
                 We invest in the latest dental technology to ensure the best possible care for our patients. Our modern equipment allows for more accurate diagnoses, comfortable treatments, and better outcomes.
               </p>
               <ul className="space-y-3 text-base text-muted mb-8">
-                {["Digital X-ray technology", "Intraoral cameras", "Advanced sterilization systems", "Comfort-focused equipment"].map(item => (
+                {["Digital X-ray technology", "Advanced sterilization systems", "Comfort-focused equipment"].map(item => (
                   <li key={item} className="flex items-center gap-2">
                     <CheckCircle2 size={16} className="text-primary shrink-0" />
                     {item}

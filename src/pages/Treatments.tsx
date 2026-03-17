@@ -81,7 +81,7 @@ const Treatments = () => (
     <PageBanner
       image={bannerImage}
       title="Our Treatments"
-      subtitle="Comprehensive dental care using the latest techniques and technology, serving Willesden, Dollis Hill & Willesden Green."
+      subtitle="Comprehensive dental care using the latest techniques and technology, serving Dollis Hill, Willesden (main areas), Brondesbury, Queens Park & Cricklewood."
       badge="Services"
     />
 
@@ -126,7 +126,7 @@ const Treatments = () => (
             <p className="text-sm font-semibold text-primary uppercase tracking-wider mb-3">Advanced Technology</p>
             <h2 className="text-foreground mb-6">Cutting-edge equipment for better outcomes</h2>
             <p className="text-muted text-base sm:text-lg leading-relaxed mb-4">
-              We use digital X-rays with 90% less radiation, intraoral cameras for detailed views, and CEREC same-day crown technology.
+              We use digital X-rays with 90% less radiation and advanced diagnostic equipment.
             </p>
             <p className="text-muted text-base sm:text-lg leading-relaxed">
               Our commitment to technology means faster, more comfortable treatments with superior results.

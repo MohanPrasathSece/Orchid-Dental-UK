@@ -1,5 +1,5 @@
 import { useState, FormEvent, useRef } from "react";
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { toast } from "sonner";
 import FadeInView from "@/components/FadeInView";
 import PageBanner from "@/components/PageBanner";
@@ -93,23 +93,10 @@ const Contact = () => {
                     <Clock size={20} className="text-primary mt-0.5" />
                     <div>
                       <p className="text-base font-medium text-foreground">Hours</p>
-                      <p className="text-base text-muted">Mon–Thu: 9am – 6:30pm</p>
-                      <p className="text-base text-muted">Friday: 9am – 6pm</p>
-                      <p className="text-base text-muted">Saturday: 9am – 2pm</p>
+                      <p className="text-base text-muted">Monday – Friday: 9:00 AM – 1:00 PM, 2:00 PM – 5:00 PM</p>
+                      <p className="text-base text-muted">Saturday: Closed</p>
                       <p className="text-base text-muted">Sunday: Closed</p>
                     </div>
-                  </div>
-                </div>
-
-                <div className="p-8 rounded-2xl bg-card shadow-medical">
-                  <h3 className="font-semibold text-foreground mb-3">Follow Us</h3>
-                  <div className="flex gap-3">
-                    <a href="#" className="w-10 h-10 rounded-lg bg-primary-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground text-primary transition-colors" aria-label="Facebook">
-                      <Facebook size={18} />
-                    </a>
-                    <a href="#" className="w-10 h-10 rounded-lg bg-primary-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground text-primary transition-colors" aria-label="Instagram">
-                      <Instagram size={18} />
-                    </a>
                   </div>
                 </div>
               </div>
@@ -158,11 +145,10 @@ const Contact = () => {
               <p className="text-base font-semibold text-primary uppercase tracking-wider mb-3">Find Us</p>
               <h2 className="text-foreground mb-4">Visit Our Practice</h2>
               <p className="text-base text-muted max-w-2xl mx-auto mb-8">
-                Located in Willesden, North West London, our modern practice is easily accessible with parking available on-site.
-                We're just a short distance from Willesden Junction station and major road networks.
+                Located in Willesden, North West London. Our modern practice is a short distance from Dollis Hill and Willesden Green tube station. Buses that serve our practice are numbers 52, 98, 260, 266, 302 and 460.
               </p>
               <p className="text-sm text-secondary/60 max-w-2xl mx-auto">
-                Areas we serve: Willesden, Dollis Hill & Willesden Green
+                Areas we serve: <span className="font-semibold">Dollis Hill, Willesden</span> (main areas), Brondesbury, Queens Park, Cricklewood
               </p>
             </div>
           </FadeInView>

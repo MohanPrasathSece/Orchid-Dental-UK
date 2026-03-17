@@ -67,14 +67,19 @@ const feeSections = [
       { treatment: "Internal / External Whitening (Single Tooth)", fee: "£250" },
       { treatment: "Combined Whitening Treatments", fee: "£500" },
       { treatment: "Whitening Syringe (Extra)", fee: "£45" },
-      { treatment: "Invisalign – 1 Arch", fee: "From £2650" },
-      { treatment: "Invisalign – 2 Arches", fee: "From £3350" },
-      { treatment: "Retainer (Hard)", fee: "From £240" },
-      { treatment: "Invisalign Retainer", fee: "From £445" },
     ],
   },
   {
-    title: "9. Anti-Bruxism Appliances",
+    title: "9. Orthodontics",
+    items: [
+      { treatment: "Invisalign – 1 Arch", fee: "From £2650" },
+      { treatment: "Invisalign – 2 Arches", fee: "From £3350" },
+      { treatment: "Retainer (Hard)", fee: "From £240" },
+      { treatment: "Invisalign Retainer", fee: "From £45" },
+    ],
+  },
+  {
+    title: "10. Anti Bruxism",
     items: [
       { treatment: "Soft Mouthguard", fee: "£230" },
       { treatment: "Michigan Splint Mouthguard", fee: "£430" },
