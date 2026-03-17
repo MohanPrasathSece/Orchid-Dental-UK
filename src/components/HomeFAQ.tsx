@@ -3,6 +3,10 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import FadeInView from "@/components/FadeInView";
 
+interface HomeFAQProps {
+  useTreatmentQuestions?: boolean;
+}
+
 const homePageFaqs = [
   {
     q: "What should I expect at my first visit?",
@@ -13,12 +17,31 @@ const homePageFaqs = [
     a: "Yes, we accept all major health funds. Please contact us to discuss your coverage.",
   },
   {
-    q: "How often should I visit the dentist?",
+    q: "How often should I visit dentist?",
     a: "We recommend a check-up and professional clean every 6 months. However, some patients with gum disease or other conditions may need more frequent visits. We'll tailor a schedule that suits your needs.",
   },
   {
     q: "Is dental treatment painful?",
-    a: "Modern dentistry is virtually pain-free. We use the latest anaesthetics and techniques to ensure your comfort. For anxious patients, we offer sedation options to make your experience stress-free.",
+    a: "Modern dentistry is virtually pain-free. We use latest anaesthetics and techniques to ensure your comfort. For anxious patients, we offer sedation options to make your experience stress-free.",
+  },
+];
+
+const treatmentFaqs = [
+  {
+    q: "How long does teeth whitening last?",
+    a: "Professional teeth whitening results typically last 1–3 years, depending on your diet and oral hygiene habits. You can purchase extra whitening syringes for maintenance touch-ups to keep your smile bright.",
+  },
+  {
+    q: "What is a root canal and is it necessary?",
+    a: "A root canal treatment is used to remove infection from inside a tooth and save it from extraction. It helps relieve pain and restore the tooth so it can function normally.",
+  },
+  {
+    q: "Are braces or clear aligners better for me?",
+    a: "The best option depends on your dental condition and treatment goals. During your consultation, the dentist will examine your teeth and recommend the most suitable orthodontic treatment.",
+  },
+  {
+    q: "What should I do in a dental emergency?",
+    a: "Call us immediately during business hours so we can assess your situation and arrange an emergency appointment if necessary.",
   },
 ];
 
@@ -44,12 +67,18 @@ const FAQItem = ({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boo
   );
 };
 
-const HomeFAQ = () => {
+interface HomeFAQProps {
+  useTreatmentQuestions?: boolean;
+}
+
+const HomeFAQ = ({ useTreatmentQuestions = false }: HomeFAQProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+
+  const faqs = useTreatmentQuestions ? treatmentFaqs : homePageFaqs;
 
   return (
     <section className="py-20 bg-card">
@@ -67,7 +96,7 @@ const HomeFAQ = () => {
         <FadeInView delay={0.1}>
           <div className="max-w-3xl mx-auto">
             <div className="rounded-2xl bg-background shadow-medical p-6">
-              {homePageFaqs.map((faq, idx) => (
+              {faqs.map((faq, idx) => (
                 <FAQItem key={faq.q} {...faq} isOpen={openIndex === idx} onToggle={() => handleToggle(idx)} />
               ))}
             </div>

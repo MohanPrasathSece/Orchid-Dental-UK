@@ -142,7 +142,7 @@ const Treatments = () => (
     </section>
 
     {/* FAQ Section */}
-    <HomeFAQ />
+    <HomeFAQ useTreatmentQuestions={true} />
 
     {/* CTA Section */}
     <CTASection subtitle="Ready to start your treatment? Book a consultation today." />

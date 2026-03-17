@@ -11,7 +11,6 @@ import Team from "./pages/Team";
 import Treatments from "./pages/Treatments";
 import Fees from "./pages/Fees";
 import Contact from "./pages/Contact";
-import FAQ from "./pages/FAQ";
 import Booking from "./pages/Booking";
 import NotFound from "./pages/NotFound";
 
@@ -34,7 +33,6 @@ const App = () => (
               <Route path="/team" element={<Team />} />
               <Route path="/treatments" element={<Treatments />} />
               <Route path="/fees" element={<Fees />} />
-              <Route path="/faq" element={<FAQ />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/booking" element={<Booking />} />
               <Route path="*" element={<NotFound />} />

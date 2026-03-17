@@ -17,7 +17,7 @@ const CTASection = ({
   to = "/contact",
   image = bannerHome,
 }: CTASectionProps) => (
-  <section className="relative py-24 overflow-hidden">
+  <section className="relative py-12 overflow-hidden">
     <div className="absolute inset-0 z-0">
       <img src={image} alt="Background" className="w-full h-full object-cover" />
       <div className="absolute inset-0 bg-black/50" />
