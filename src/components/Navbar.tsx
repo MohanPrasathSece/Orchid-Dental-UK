@@ -17,6 +17,13 @@ const Navbar = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const handleNavClick = (to: string) => {
+    if (location.pathname === to) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setMobileOpen(false);
+  };
+
   useEffect(() => {
     if (!mobileOpen) return;
 
@@ -44,6 +51,7 @@ const Navbar = () => {
             <Link
               key={link.to}
               to={link.to}
+              onClick={() => handleNavClick(link.to)}
               className="relative px-4 py-2 text-sm font-medium text-muted hover:text-foreground transition-colors duration-200"
             >
               {link.label}
@@ -125,7 +133,7 @@ const Navbar = () => {
                       >
                         <Link
                           to={link.to}
-                          onClick={() => setMobileOpen(false)}
+                          onClick={() => handleNavClick(link.to)}
                           className={
                             "flex items-center justify-between rounded-2xl px-5 py-4 text-base font-medium transition-colors " +
                             (active
