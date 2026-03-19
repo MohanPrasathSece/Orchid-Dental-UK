@@ -40,7 +40,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between py-3 px-6">
         <Link to="/" className="flex items-center gap-2">
           <img src={logo} alt="Orchid Dental" className="h-10 w-10 object-contain" />
-          <span className="text-xl font-bold text-foreground tracking-tight">
+          <span className="text-xl font-bold text-foreground tracking-tight font-rossetti">
             Orchid <span className="text-primary">Dental</span>
           </span>
         </Link>

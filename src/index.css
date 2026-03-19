@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap');
+@import url('https://db.onlinewebfonts.com/c/96996b95c19ecf8733387b6c0b2311e3?family=Rossetti+W00+Regular');
 
 @tailwind base;
 @tailwind components;
@@ -93,5 +94,8 @@
   }
   .max-w-prose {
     max-width: 65ch;
+  }
+  .font-rossetti {
+    font-family: 'Rossetti W00 Regular', Georgia, serif;
   }
 }
