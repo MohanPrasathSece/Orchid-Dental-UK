@@ -2,11 +2,18 @@ import express from "express";
 import nodemailer from "nodemailer";
 import path from "path";
 import { fileURLToPath } from "url";
+import cors from "cors";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+// Enable CORS for all routes
+app.use(cors({
+  origin: ['http://localhost:8080', 'http://localhost:8081', 'http://localhost:8082'],
+  credentials: true
+}));
 
 // Set proper MIME types
 app.use(express.static(path.join(__dirname, "dist"), {
@@ -49,7 +56,12 @@ app.post("/api/contact", async (req, res) => {
   } = process.env;
 
   if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS) {
-    return res.status(500).json({ ok: false, error: "SMTP not configured" });
+    console.log("SMTP not configured - logging form submission instead:");
+    console.log("Name:", name);
+    console.log("Phone:", phone);
+    console.log("Email:", email);
+    console.log("Message:", message);
+    return res.json({ ok: true, message: "Form logged successfully (SMTP not configured)" });
   }
 
   const transporter = nodemailer.createTransport({
@@ -86,7 +98,7 @@ app.get("*", (_req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
-const port = Number(process.env.PORT) || 8080;
+const port = Number(process.env.PORT) || 6000;
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
