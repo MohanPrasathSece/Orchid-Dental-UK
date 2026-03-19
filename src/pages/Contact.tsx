@@ -148,7 +148,7 @@ const Contact = () => {
                 Located in Willesden, North West London. Our modern practice is a short distance from Dollis Hill and Willesden Green tube station. Buses that serve our practice are numbers 52, 98, 260, 266, 302 and 460.
               </p>
               <p className="text-sm text-secondary/60 max-w-2xl mx-auto">
-                Areas we serve: <span className="font-semibold">Dollis Hill, Willesden</span> (main areas), Brondesbury, Queens Park, Cricklewood
+                Areas we serve: <span className="font-semibold">Dollis Hill, Willesden, Brondesbury, Queens Park & Cricklewood</span>
               </p>
             </div>
           </FadeInView>

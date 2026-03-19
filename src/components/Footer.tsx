@@ -47,7 +47,6 @@ const Footer = () => {
                   { to: "/team", label: "Our Team" },
                   { to: "/treatments", label: "Treatments" },
                   { to: "/fees", label: "Fees" },
-                  { to: "/faq", label: "FAQ" },
                   { to: "/contact", label: "Contact" },
                 ].map((l) => (
                   <Link key={l.to} to={l.to} className="text-sm text-secondary/70 hover:text-primary transition-colors">
@@ -84,7 +83,7 @@ const Footer = () => {
                   <span>158–160 High Road, London NW10 2PB</span>
                 </div>
                 <div className="text-xs text-secondary/50 pt-1">
-                  <span className="font-semibold">Main areas:</span> Dollis Hill, Willesden | Also serving: Brondesbury, Queens Park, Cricklewood
+                  <span className="font-semibold">Local areas:</span> Dollis Hill, Willesden | Also serving: Brondesbury, Queens Park, Cricklewood
                 </div>
               </div>
             </div>

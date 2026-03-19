@@ -31,15 +31,6 @@ const team = [
     featured: false,
   },
   {
-    name: "Dr. Mayur Bhatt",
-    role: "Dentist",
-    qualifications: "BDS",
-    gdcNumber: "123456",
-    bio: "Dr Mayur Bhatt provides comprehensive dental care with a strong focus on patient comfort and long-term oral health.",
-    image: doctorPriya,
-    featured: false,
-  },
-  {
     name: "Dr. Yi Gi Chin",
     role: "Dentist",
     qualifications: "BDS",

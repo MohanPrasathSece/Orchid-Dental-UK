@@ -23,14 +23,14 @@ const features = [
   { icon: Shield, title: "Advanced Technology", desc: "State-of-the-art equipment for precise diagnostics and comfortable treatments." },
   { icon: Heart, title: "Patient-First Care", desc: "Every treatment plan is tailored to your unique needs and comfort level." },
   { icon: Sparkles, title: "Gentle Approach", desc: "Anxiety-free dentistry with a calming environment and compassionate team." },
-  { icon: Clock, title: "Flexible Scheduling", desc: "Early morning and evening appointments to fit your busy lifestyle." },
+  { icon: Clock, title: "Flexible Scheduling", desc: "Appointments available to fit your busy lifestyle." },
 ];
 
 const heroImages = [hero1, hero1st, hero2, hero3, hero4];
 
 const testimonials = [
   { name: "Rebecca M.", text: "The team at Orchid Dental made me feel completely at ease. Best dental experience I've ever had!", rating: 5 },
-  { name: "David L.", text: "Professional, gentle, and thorough. Dr. Mitchell explained everything clearly and my crown looks amazing.", rating: 5 },
+  { name: "David L.", text: "Professional, gentle, and thorough. The team explained everything clearly and my treatment looks amazing.", rating: 5 },
   { name: "Sarah K.", text: "My kids actually look forward to their dental visits now. The staff are so friendly and patient with children.", rating: 5 },
 ];
 
@@ -68,7 +68,7 @@ const Home = () => {
                   Experience modern dentistry in a serene environment. Orchid Dental combines advanced technology with a gentle touch, ensuring every visit is comfortable and every smile is crafted with care.
                 </p>
                 <p className="text-sm text-white/80 leading-relaxed max-w-prose mb-8">
-                  Based in Willesden, welcoming patients from Dollis Hill and Willesden Green.
+                  Based in Willesden, welcoming patients from Dollis Hill, Willesden, Brondesbury, Queens Park & Cricklewood.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
@@ -201,7 +201,7 @@ const Home = () => {
                 { num: "15+", label: "Years experience" },
                 { num: "10k+", label: "Happy patients" },
                 { num: "98%", label: "Satisfaction rate" },
-                { num: "6", label: "Specialist dentists" },
+                { num: "5", label: "Dentists" },
               ].map(s => (
                 <div key={s.label} className="p-8 rounded-2xl bg-card shadow-medical text-center">
                   <p className="text-3xl font-bold text-primary font-mono">

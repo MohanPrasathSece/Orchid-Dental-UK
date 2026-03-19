@@ -62,7 +62,7 @@ app.post("/api/contact", async (req, res) => {
     },
   });
 
-  const to = ADMIN_EMAIL || "zyradigitalsofficial@gmail.com";
+  const to = ADMIN_EMAIL || "info@orchiddental.co.uk";
   const from = FROM_EMAIL || SMTP_USER;
 
   try {

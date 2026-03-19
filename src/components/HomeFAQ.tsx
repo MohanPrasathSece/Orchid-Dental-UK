@@ -105,10 +105,10 @@ const HomeFAQ = ({ useTreatmentQuestions = false }: HomeFAQProps) => {
           <div className="text-center mt-8">
             <p className="text-muted text-sm mb-4">Have more questions?</p>
             <Link
-              to="/faq"
+              to="/contact"
               className="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:brightness-110 active:scale-95 transition-all duration-200"
             >
-              View All FAQs
+              Contact Us
             </Link>
           </div>
         </FadeInView>
