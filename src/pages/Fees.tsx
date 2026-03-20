@@ -75,7 +75,7 @@ const feeSections = [
       { treatment: "Invisalign – 1 Arch", fee: "From £2650" },
       { treatment: "Invisalign – 2 Arches", fee: "From £3350" },
       { treatment: "Retainer (Hard)", fee: "From £240" },
-      { treatment: "Invisalign Retainer", fee: "From £45" },
+      { treatment: "Invisalign Retainer", fee: "From £445" },
     ],
   },
   {

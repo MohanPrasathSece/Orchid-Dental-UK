@@ -81,7 +81,7 @@ const Treatments = () => (
     <PageBanner
       image={bannerImage}
       title="Our Treatments"
-      subtitle="Comprehensive dental care using the latest techniques and technology, serving Dollis Hill, Willesden (main areas), Brondesbury, Queens Park & Cricklewood."
+      subtitle="Comprehensive dental care using the latest techniques and technology, serving Dollis Hill, Willesden, Brondesbury, Queens Park & Cricklewood."
       badge="Services"
     />
 

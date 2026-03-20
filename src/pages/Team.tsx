@@ -15,7 +15,7 @@ const team = [
   {
     name: "Dr. Ashish Patel",
     role: "Principal Dentist",
-    qualifications: "BDS, MJDF RCS Eng",
+    qualifications: "BDS, MJDF RCS Eng, PGCert Den Ed",
     gdcNumber: "193239",
     bio: "Dr. Ashish Patel graduated from the prestigious King's College University and has become a dentist who blends professional expertise with genuine care and empathy. He takes the time to listen to each patient, ensuring they feel comfortable and understood, while also educating them about their oral health. By explaining treatments clearly and offering guidance on prevention, he empowers patients to make informed decisions, fostering not just healthy smiles, but confident, well-informed individuals.",
     image: doctorMichael,
