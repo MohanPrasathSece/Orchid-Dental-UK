@@ -3,6 +3,9 @@ import nodemailer from "nodemailer";
 import path from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -72,24 +75,36 @@ app.post("/api/contact", async (req, res) => {
       user: SMTP_USER,
       pass: SMTP_PASS,
     },
+    tls: {
+      rejectUnauthorized: false
+    }
   });
 
   const to = ADMIN_EMAIL || "info@orchiddental.co.uk";
   const from = FROM_EMAIL || SMTP_USER;
 
   try {
-    await transporter.sendMail({
+    // 1. Send the inquiry alert to the admin in the background
+    transporter.sendMail({
       to,
       from,
       replyTo: email,
       subject: `Website enquiry from ${name}`,
       text: `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${message}`,
-    });
+    }).catch(err => console.error("Admin Email send failed:", err));
+
+    // 2. Send a confirmation auto-response to the customer who filled out the form in the background
+    transporter.sendMail({
+      to: email,
+      from,
+      subject: `Thank you for contacting Orchid Dental`,
+      text: `Hi ${name},\n\nThank you for contacting Orchid Dental. We have received your message and our team will get back to you shortly.\n\nHere is a copy of your message:\n"${message}"\n\nBest regards,\nThe Orchid Dental Team`,
+    }).catch(err => console.error("User Email send failed:", err));
 
     return res.json({ ok: true });
   } catch (err) {
-    console.error("Email send failed:", err);
-    return res.status(500).json({ ok: false, error: "Failed to send" });
+    console.error("Contact API error:", err);
+    return res.status(500).json({ ok: false, error: "Failed to process request" });
   }
 });
 
@@ -98,7 +113,22 @@ app.get("*", (_req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
-const port = Number(process.env.PORT) || 6000;
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
-});
+let port = Number(process.env.PORT) || 6000;
+
+function startServer(p) {
+  const server = app.listen(p, () => {
+    console.log(`Server running on http://localhost:${p}`);
+  });
+
+  server.on('error', (e) => {
+    if (e.code === 'EADDRINUSE') {
+      console.log(`Port ${p} is in use, trying ${p + 1}...`);
+      startServer(p + 1);
+    } else {
+      console.error('Server error:', e);
+      process.exit(1);
+    }
+  });
+}
+
+startServer(port);

@@ -1,5 +1,6 @@
 import { useState, FormEvent, useRef } from "react";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, CheckCircle2 } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { toast } from "sonner";
 import FadeInView from "@/components/FadeInView";
 import PageBanner from "@/components/PageBanner";
@@ -9,6 +10,7 @@ import bannerImage from "@/assets/banner-contact.jpg";
 
 const Contact = () => {
   const [sending, setSending] = useState(false);
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -21,16 +23,17 @@ const Contact = () => {
     const email = (formData.get("email") as string) || "";
     const message = (formData.get("message") as string) || "";
 
-    const showSuccessTimer = window.setTimeout(() => {
-      toast.success("Message received — we’ll get back to you shortly.");
-    }, 3000);
-
     try {
-      const resp = await fetch("/api/contact", {
+      // Start the fetch and a 2-second timer simultaneously
+      const fetchPromise = fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, phone, email, message }),
       });
+      const timerPromise = new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // Wait for both to complete
+      const [resp] = await Promise.all([fetchPromise, timerPromise]);
 
       if (!resp.ok) {
         const data = (await resp.json().catch(() => null)) as { error?: string } | null;
@@ -38,8 +41,8 @@ const Contact = () => {
       }
 
       if (formRef.current) formRef.current.reset();
+      setShowSuccessDialog(true);
     } catch (error) {
-      window.clearTimeout(showSuccessTimer);
       console.error("Contact form error:", error);
       toast.error("Failed to send message. Please try again or use the phone number.");
     } finally {
@@ -170,8 +173,31 @@ const Contact = () => {
       </section>
 
       <CTASection title="Have questions about our services?" subtitle="Get in touch with our team for personalized dental care advice." buttonText="Send Message" to="/contact#contact-form" />
+
+      <Dialog open={showSuccessDialog} onOpenChange={setShowSuccessDialog}>
+        <DialogContent className="sm:max-w-md text-center p-8">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-2">
+              <CheckCircle2 className="w-8 h-8 text-green-600" />
+            </div>
+            <DialogHeader>
+              <DialogTitle className="text-2xl text-center">Message Sent!</DialogTitle>
+              <DialogDescription className="text-center text-base pt-2">
+                Thank you for getting in touch. We have received your message and will contact you shortly.
+              </DialogDescription>
+            </DialogHeader>
+            <button
+              onClick={() => setShowSuccessDialog(false)}
+              className="mt-6 px-8 py-2.5 bg-primary text-primary-foreground font-medium rounded-lg hover:brightness-110 transition-all focus:outline-none"
+            >
+              Continue
+            </button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
 
 export default Contact;
+
