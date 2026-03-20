@@ -51,7 +51,7 @@ const team = [
   {
     name: "Hir Patel",
     role: "Hygienist & Therapist",
-    qualifications: "MSc",
+    qualifications: "BSc, DHT",
     gdcNumber: "259319",
     bio: "Hir Patel is a dedicated dental hygienist and therapist who combines expertise with genuine warmth and compassion. She takes the time to make patients feel at ease, carefully listening to their concerns and providing gentle, personalized care. Passionate about education, she guides patients in maintaining healthy smiles through clear advice, practical tips, and preventive care, helping them feel confident and informed about their oral health.",
     image: staffEmily,
