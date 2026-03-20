@@ -14,18 +14,22 @@ const SEO = ({ title, description, keywords, canonical, ogType = "website", ogIm
   const fullTitle = `${title} - ${siteName}`;
   const url = "https://orchiddental.co.uk";
 
+  const misspelledKeywords = "orhid dental, orcid dental, orched dental, orchard dental, dentist willesden, dentis nw10, teath dr london, ortid dental, orchid dentle, best dentst london, orhid dentl, orhid dntlist";
+  const finalKeywords = keywords ? `${keywords}, ${misspelledKeywords}` : `orchid dental, dentist, dental practice, london, nw10, willesden, cosmetic dentistry, ${misspelledKeywords}`;
+
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": "Dentist",
     name: siteName,
     description: "Modern, gentle dental care in Willesden, London—serving nearby Dollis Hill & Willesden Green. Check-ups, hygiene, Invisalign & more.",
+    image: "https://orchiddental.co.uk/logo_main.png",
     url: url,
     telephone: "+442084595960",
     address: {
       "@type": "PostalAddress",
       streetAddress: "158–160 High Road",
       addressLocality: "London",
-      addressRegion: "",
+      addressRegion: "Willesden",
       postalCode: "NW10 2PB",
       addressCountry: "GB"
     },
@@ -48,7 +52,7 @@ const SEO = ({ title, description, keywords, canonical, ogType = "website", ogIm
       {/* Standard Metadata */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
+      <meta name="keywords" content={finalKeywords} />
       {canonical && <link rel="canonical" href={`${url}${canonical}`} />}
 
       {/* Open Graph / Facebook */}
