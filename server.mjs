@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
 import dotenv from "dotenv";
+import fs from "fs/promises";
 
 dotenv.config();
 
@@ -108,9 +109,113 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
-// SPA fallback: serve index.html for non-static routes
-app.get("*", (_req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+// Backend SEO Setup
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.send("User-agent: *\nAllow: /\nSitemap: https://orchiddental.co.uk/sitemap.xml");
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  res.type('application/xml');
+  const baseUrl = "https://orchiddental.co.uk";
+  const routes = ['', '/booking', '/contact', '/fees', '/team', '/treatments'];
+  
+  let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+  
+  routes.forEach(route => {
+    xml += '  <url>\n';
+    xml += `    <loc>${baseUrl}${route}</loc>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`;
+    xml += `    <priority>${route === '' ? '1.0' : '0.8'}</priority>\n`;
+    xml += '  </url>\n';
+  });
+  
+  xml += '</urlset>';
+  res.send(xml);
+});
+
+const SEO_MAP = {
+  '/': { title: 'Orchid Dental | Premium Dental Practice in London', desc: 'Welcome to Orchid Dental, your premium dental practice in Willesden, London NW10.' },
+  '/contact': { title: 'Contact Us | Orchid Dental London', desc: 'Get in touch with Orchid Dental Practice in Willesden, London NW10. Book your appointment today.' },
+  '/booking': { title: 'Book an Appointment | Orchid Dental', desc: 'Book your dental consultation at Orchid Dental Practice online easily.' },
+  '/team': { title: 'Our Team | Orchid Dental Experts', desc: 'Meet our highly experienced and friendly dental professionals at Orchid Dental.' },
+  '/fees': { title: 'Fees & Pricing | Orchid Dental', desc: 'Transparent dental fees and pricing for our premium treatments in London.' },
+  '/treatments': { title: 'Dental Treatments | Orchid Dental', desc: 'Explore our wide range of professional dental treatments and cosmetic procedures.' },
+};
+
+// SPA fallback: serve index.html for non-static routes, injecting SEO dynamically
+app.get("*", async (req, res) => {
+  try {
+    const indexPath = path.join(__dirname, "dist", "index.html");
+    let html = await fs.readFile(indexPath, 'utf-8');
+
+    // Backend SEO Injection
+    const route = req.path;
+    const seo = SEO_MAP[route] || SEO_MAP['/'];
+    
+    // Enhanced JSON-LD Schema for LocalBusiness (Dentist)
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "Orchid Dental",
+      "image": "https://orchiddental.co.uk/logo_main.png",
+      "url": "https://orchiddental.co.uk",
+      "telephone": "020 8459 2626",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "158–160 High Road",
+        "addressLocality": "Willesden, London",
+        "postalCode": "NW10 2PB",
+        "addressCountry": "UK"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ]
+    };
+
+    // Extreme SEO - Target exactly what people mistype
+    const misspelledKeywords = "orhid dental, orcid dental, orched dental, orchard dental, dentist willesden, dentis nw10, teath dr london, ortid dental, orchid dentle, best dentst london, orhid dentl, orhid dntlist";
+
+    // Create Advanced meta tags
+    const metaTags = `
+    <!-- Ultra-Powerful Backend SEO -->
+    <title>${seo.title}</title>
+    <meta name="description" content="${seo.desc}">
+    <meta name="keywords" content="orchid dental, dentist, dental practice, london, nw10, willesden, cosmetic dentistry, ${misspelledKeywords}">
+    <link rel="canonical" href="https://orchiddental.co.uk${route}" />
+    
+    <meta property="og:title" content="${seo.title}">
+    <meta property="og:description" content="${seo.desc}">
+    <meta property="og:url" content="https://orchiddental.co.uk${route}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Orchid Dental">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${seo.title}">
+    <meta name="twitter:description" content="${seo.desc}">
+    
+    <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+    <!-- End Ultra-Powerful Backend SEO -->
+    `;
+
+    // Inject before </head> to override any default client-side tags
+    html = html.replace('</head>', `${metaTags}\n</head>`);
+    
+    res.send(html);
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      res.status(404).send("Frontend build not found (run npm run build).");
+    } else {
+      console.error("Error serving index.html:", err);
+      res.status(500).send("Server Error");
+    }
+  }
 });
 
 let port = Number(process.env.PORT) || 6000;
