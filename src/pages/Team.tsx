@@ -17,7 +17,7 @@ const team = [
     role: "Principal Dentist",
     qualifications: "BDS, MJDF RCS Eng",
     gdcNumber: "193239",
-    bio: "Dr Ashish Patel graduated from prestigious Barts and The London School of Medicine and Dentistry. As principal dentist, he brings extensive clinical experience and leadership to the practice. He is committed to providing high-quality dental care and continually updating his skills with advanced training and modern techniques.",
+    bio: "Dr. Ashish Patel graduated from the prestigious King's College University and has become a dentist who blends professional expertise with genuine care and empathy. He takes the time to listen to each patient, ensuring they feel comfortable and understood, while also educating them about their oral health. By explaining treatments clearly and offering guidance on prevention, he empowers patients to make informed decisions, fostering not just healthy smiles, but confident, well-informed individuals.",
     image: doctorMichael,
     featured: true,
   },
@@ -26,7 +26,7 @@ const team = [
     role: "Dentist",
     qualifications: "BDS",
     gdcNumber: "114247",
-    bio: "Dr Rasmita Rabdiya brings warmth, professionalism, and dedication to patient care. She focuses on ensuring patients feel comfortable and confident throughout their treatment while delivering excellent dental results.",
+    bio: "Dr Rasmita Rabdiya brings warmth, professionalism, and empathy to every patient interaction. She takes the time to listen and understand individual concerns, while educating patients about their oral health in a clear and approachable way. Her goal is to provide gentle, personalized care that leaves patients informed, comfortable, and confident in their smiles.",
     image: doctorJames,
     featured: false,
   },
@@ -53,7 +53,7 @@ const team = [
     role: "Hygienist & Therapist",
     qualifications: "MSc",
     gdcNumber: "259319",
-    bio: "Hir Patel is a dedicated dental hygienist and therapist who focuses on preventive dentistry. He helps patients maintain healthy gums and teeth through professional cleaning and oral hygiene education.",
+    bio: "Hir Patel is a dedicated dental hygienist and therapist who combines expertise with genuine warmth and compassion. She takes the time to make patients feel at ease, carefully listening to their concerns and providing gentle, personalized care. Passionate about education, she guides patients in maintaining healthy smiles through clear advice, practical tips, and preventive care, helping them feel confident and informed about their oral health.",
     image: staffEmily,
     featured: false,
   },
@@ -135,8 +135,8 @@ const Team = () => (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {team.slice(1).map((member, i) => (
             <FadeInView key={member.name} delay={i * 0.1}>
-              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden">
-                <div className="relative h-52 sm:h-64 overflow-hidden">
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
+                <div className="relative h-48 overflow-hidden flex-shrink-0">
                   <img 
                     src={member.image} 
                     alt={member.name} 
@@ -148,14 +148,14 @@ const Team = () => (
                     <p className="text-white/90 text-xs sm:text-sm">{member.role}</p>
                   </div>
                 </div>
-                <div className="p-6 sm:p-8">
+                <div className="p-6 sm:p-8 flex-1 flex flex-col">
                   <p className="text-base text-primary font-mono mb-2">{member.qualifications}</p>
                   {member.gdcNumber && (
                     <p className="text-sm text-muted mb-4">
                       GDC: {member.gdcNumber}
                     </p>
                   )}
-                  <p className="text-base text-muted leading-relaxed line-clamp-3">
+                  <p className="text-base text-muted leading-relaxed flex-1">
                     {member.bio}
                   </p>
                 </div>
